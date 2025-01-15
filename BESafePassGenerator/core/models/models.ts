@@ -15,3 +15,9 @@ class Password {
     
 } 
 export default Password;
+
+
+export interface PasswordResponse {
+    id: number;
+    password: string;
+}
