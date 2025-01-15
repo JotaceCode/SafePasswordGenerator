@@ -1,6 +1,6 @@
 import { Request, Response } from "express"; // Asegúrate de importar correctamente
-import Password from "../core/models/models";
-import {PasswordService} from "../services/password.service";
+import Password, { PasswordResponse } from "../core/models/models";
+import { PasswordService } from "../core/services/password.service";
 
 class PasswordController {
   private _passwordService: PasswordService;
@@ -52,7 +52,7 @@ class PasswordController {
   async createPassword(req: Request, res: Response): Promise<void> {
     try {
       const password: Password = req.body;
-      const result: Password = await this._passwordService.create(password);
+      const result: PasswordResponse = await this._passwordService.create(password);
       res.status(201).json(result);
     } catch (error: any) {
       console.error("Error en createPassword:", error);
