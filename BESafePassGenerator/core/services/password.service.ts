@@ -1,8 +1,10 @@
-import Password from "../core/models/models";
-import { PasswordRepository } from "../Repository/password.repository";
+import { PasswordRepository } from "../../Repository/password.repository";
+import Password, { PasswordResponse } from "../models/models";
 
 export class PasswordService {
   private _passwordRepository: PasswordRepository;
+
+  
   constructor(private passwordRepository: PasswordRepository) {
     this._passwordRepository = passwordRepository;
   }
@@ -13,8 +15,8 @@ export class PasswordService {
    * @param password Objeto de tipo Password.
    * @returns El password creado o null si falla.
    */
-  async create(password: Password): Promise<Password> {
-    const result: Password = await this._passwordRepository.create(password);
+  async create(password: Password): Promise<PasswordResponse> {
+    const result: PasswordResponse = await this._passwordRepository.create(password);
     if (result) {
       return result;
     } else {
