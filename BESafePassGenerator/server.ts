@@ -1,9 +1,12 @@
 import express from 'express';
 import router from './routes/routes';
+import migratePasswordsTable from './config/dbconfig';
 
 const app = express();
 app.use(express.json());
 app.use(router);
+
+migratePasswordsTable();
 
 const PORT = 3000;
 
