@@ -4,7 +4,7 @@ import Password, { PasswordResponse } from "../models/models";
 export class PasswordService {
   private _passwordRepository: PasswordRepository;
 
-  
+
   constructor(private passwordRepository: PasswordRepository) {
     this._passwordRepository = passwordRepository;
   }
@@ -70,7 +70,7 @@ export class PasswordService {
    * @param id ID del password a eliminar.
    */
   async delete(id: number): Promise<string> {
-    const result: any = await this._passwordRepository.delete(id);
+    const result: string = await this._passwordRepository.delete(id);
     if (!result) {
       throw new Error(`Failed to delete password with ID ${id}`);
     } else {

@@ -10,10 +10,10 @@ const passwordController = new PasswordController(passwordService);
 
 // Define las rutas y enlaza los métodos
 router.get("/api/passwords", passwordController.getAllPasswords.bind(passwordController));
-router.get("/api/passwords/:id", passwordController.getPasswordById.bind(passwordController));
+router.get("/api/passwords/:id_pass", passwordController.getPasswordById.bind(passwordController));
 router.post("/api/passwords", passwordController.createPassword.bind(passwordController));
-router.put("/api/passwords/:id", passwordController.updatePassword.bind(passwordController));
-router.delete("/api/passwords/:id", passwordController.deletePassword.bind(passwordController));
+router.put("/api/passwords/:id_pass", passwordController.updatePassword.bind(passwordController));
+router.delete("/api/passwords/:id_pass", passwordController.deletePassword.bind(passwordController));
 
 router.get("", (req, res) => {
   res.send("API");

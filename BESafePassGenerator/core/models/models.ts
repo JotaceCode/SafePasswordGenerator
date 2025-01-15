@@ -1,12 +1,12 @@
 class Password {
-    id: number;
+    id_pass: number;
     password: string;
     characters: number;
     createdAt: Date;
     updatedAt: Date;
 
     constructor(id: number, password: string, characters: number, createdAt: Date, updatedAt: Date) {
-        this.id = id;
+        this.id_pass = id;
         this.password = password;
         this.characters = characters;
         this.createdAt = createdAt;
@@ -18,6 +18,6 @@ export default Password;
 
 
 export interface PasswordResponse {
-    id: number;
     password: string;
+    ok:true;
 }
