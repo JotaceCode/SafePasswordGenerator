@@ -3,11 +3,11 @@ import React, { useState } from "react";
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { button as buttonStyles } from "@nextui-org/theme";
-import { Card, Skeleton, Button } from "@nextui-org/react";
-
+import PasswordService from "./services/password.service";
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
-import { GithubIcon, Logazo } from "@/components/icons";
+import { GithubIcon } from "@/components/icons";
+import { Password, PasswordRequest } from "./models/clases";
 
 export default function Home() {
   const [password, setPassword] = useState(""); // Estado para la contraseña
@@ -15,9 +15,9 @@ export default function Home() {
   const [isLoaded, setIsLoaded] = useState(false); // Estado para el cargador
 
   // Función para generar una contraseña aleatoria
-  const generatePassword = () => {
+  const generatePassword = async () => {
     const caracteres =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/";
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/";  
     let newPassword = "";
 
     for (let i = 0; i < passwordLength; i++) {
@@ -25,17 +25,31 @@ export default function Home() {
       newPassword += caracteres[randomIndex];
     }
 
+    const now = new Date();
     setPassword(newPassword); // Actualiza el estado con la nueva contraseña
+    const password:PasswordRequest={
+      
+      password:newPassword ,
+      characters: newPassword.length,
+      createdAt: now,
+      updatedAt: now
+    }
+
+    try {
+      // Guardar la contraseña en la base de datos
+      setIsLoaded(true); // Mostrar cargador
+      await PasswordService.createPassword(password); // Llama al servicio
+      alert("Password saved successfully!"); // Mensaje de éxito
+    } catch (error) {
+      alert("Failed to save password."); // Manejar errores
+    } finally {
+      setIsLoaded(false); // Ocultar cargador
+    }
   };
 
   // Función para manejar la selección de la longitud de la contraseña
   const handleLengthChange = (event:any) => {
     setPasswordLength(parseInt(event.target.value)); // Actualiza la longitud de la contraseña con el valor seleccionado
-  };
-
-  // Función para alternar el estado de carga
-  const toggleLoad = () => {
-    setIsLoaded(!isLoaded);
   };
 
   return (

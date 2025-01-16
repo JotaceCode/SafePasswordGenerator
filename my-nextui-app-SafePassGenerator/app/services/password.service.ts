@@ -1,69 +1,65 @@
 import axios from 'axios';
-import { Password , passwordResponse } from '../models/clases';
-import * as AxiosResponse  from 'axios';
+import { Password, PasswordRequest } from '../models/clases';
 
-export class PasswordService {
-  private http: AxiosResponse;
+const API_BASE_URL = 'http://localhost:3001/api/passwords'; // Cambia esto según la URL base de tu backend
+
+const passwordService = {
+
+  // Get all passwords
+  getPasswords: async () => {
+    try {
+      const response = await axios.get(API_BASE_URL);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching passwords:', error);
+      throw error;
+    }
+  },
+
+  // Create a new password
+  createPassword: async (passwordData:PasswordRequest) => {
+    try {
+      const response = await axios.post(API_BASE_URL, passwordData);
+      return response.data;
+    } catch (error) {
+      console.error('Error creating password:', error);
+      throw error;
+    }
+  },
+
+  // Update an existing password
+  updatePassword: async (passwordData:Password) => {
+    try {
+      const response = await axios.put(`${API_BASE_URL}/${passwordData.id_pass}`, passwordData);
+      return response.data;
+    } catch (error) {
+      console.error('Error updating password:', error);
+      throw error;
+    }
+  },
+
+  // Get a password by its ID
+  getPasswordById: async (id:number) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error fetching password:', error);
+      throw error;
+    }
+  },
 
 
+  // Delete a password by its ID
+  deletePassword: async (id:number) => {
+    try {
+      const response = await axios.delete(`${API_BASE_URL}/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error deleting password:', error);
+      throw error;
+    }
+  },
+};
 
-  constructor(baseURL: string = 'http://localhost:3000/api') {
-    this.http = axios.create({
-      baseURL,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-  }
-
-  /**
-   * Obtiene todas las contraseñas.
-   * @returns Lista de contraseñas.
-   */
-  async getAllPasswords(): Promise<any[]> {
-    const response: AxiosResponse<any[]> = await this.http.get('/passwords');
-    return response.data;
-  }
-
-  /**
-   * Obtiene una contraseña por ID.
-   * @param id ID de la contraseña.
-   * @returns La contraseña encontrada.
-   */
-  async getPasswordById(id: number): Promise<any> {
-    const response: AxiosResponse<any> = await this.http.get(`/passwords/${id}`);
-    return response.data;
-  }
-
-  /**
-   * Crea una nueva contraseña.
-   * @param password Objeto de contraseña a crear.
-   * @returns La contraseña creada.
-   */
-  async createPassword(password: any): Promise<any> {
-    const response: AxiosResponse<any> = await this.http.post('/passwords', password);
-    return response.data;
-  }
-
-  /**
-   * Actualiza una contraseña existente.
-   * @param id ID de la contraseña a actualizar.
-   * @param password Objeto con los datos actualizados.
-   * @returns La contraseña actualizada.
-   */
-  async updatePassword(id: number, password: any): Promise<any> {
-    const response: AxiosResponse<any> = await this.http.put(`/passwords/${id}`, password);
-    return response.data;
-  }
-
-  /**
-   * Elimina una contraseña por ID.
-   * @param id ID de la contraseña a eliminar.
-   * @returns Mensaje de confirmación.
-   */
-  async deletePassword(id: number): Promise<string> {
-    const response: AxiosResponse<any> = await this.http.delete(`/passwords/${id}`);
-    return response.data.message;
-  }
-}
-
+export default passwordService;
