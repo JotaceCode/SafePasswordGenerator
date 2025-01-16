@@ -31,7 +31,7 @@ class PasswordController {
    */
   async getPasswordById(req: Request, res: Response): Promise<void> {
     try {
-      const id = parseInt(req.params.id, 10); // Asegúrate de convertir a número
+      const id = parseInt(req.params.id_pass, 10); // Asegúrate de convertir a número
       if (isNaN(id)) {
         res.status(400).send("Invalid ID");
         return;
