@@ -1,6 +1,10 @@
 import axios from 'axios';
 import { Password, PasswordRequest } from '../models/clases';
 
+// Configuración global de los encabezados
+axios.defaults.headers.common['Content-Type'] = 'application/json';
+// No es necesario agregar 'Access-Control-Allow-Origin' aquí. Este encabezado es manejado por el servidor.
+
 const API_BASE_URL = 'http://localhost:3001/api/passwords'; // Cambia esto según la URL base de tu backend
 
 const passwordService = {
@@ -48,7 +52,6 @@ const passwordService = {
       throw error;
     }
   },
-
 
   // Delete a password by its ID
   deletePassword: async (id:number) => {
