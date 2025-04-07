@@ -50,7 +50,6 @@ export default function RootLayout({
               {children}
               {/* Aquí va el objeto seleccionado con la ruta */}
             </main>
-
             <footer className="w-full flex items-center justify-center py-3">
               <Link
                 isExternal

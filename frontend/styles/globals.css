@@ -6,3 +6,19 @@ Logazo{
     width: 100px;
     height: 100px;
 }
+
+
+.custom-toast-success {
+    background-color: #0a3045 !important; 
+    color: white;
+  }
+  
+  .custom-toast-error {
+    background-color: #0a3045 !important; 
+    color: white;
+  }
+  
+  .custom-toast-warning {
+    background-color: #ffc107 !important; /* Amarillo para advertencia */
+    color: black;
+  }
