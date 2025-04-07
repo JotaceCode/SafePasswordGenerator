@@ -1,6 +1,7 @@
 import { Request, Response } from "express"; // Asegúrate de importar correctamente
 import Password, { PasswordResponse } from "../core/models/models";
 import { PasswordService } from "../core/services/password.service";
+import bcrypt from "bcrypt";
 
 class PasswordController {
   private _passwordService: PasswordService;
@@ -52,6 +53,8 @@ class PasswordController {
   async createPassword(req: Request, res: Response): Promise<void> {
     try {
       const password: Password = req.body;
+      const hashedPassword = await bcrypt.hash(password.password, 10);
+      password.password = hashedPassword; 
       const result: PasswordResponse = await this._passwordService.create(password);
       res.status(201).json(result);
     } catch (error: any) {
