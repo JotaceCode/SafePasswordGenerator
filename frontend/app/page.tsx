@@ -3,11 +3,13 @@ import React, { useState } from "react";
 import { Link } from "@nextui-org/link";
 import { Snippet } from "@nextui-org/snippet";
 import { button as buttonStyles } from "@nextui-org/theme";
+
 import PasswordService from "./services/password.service";
+import { PasswordRequest } from "./models/clases";
+
 import { siteConfig } from "@/config/site";
 import { title, subtitle } from "@/components/primitives";
 import { GithubIcon } from "@/components/icons";
-import { Password, PasswordRequest } from "./models/clases";
 
 export default function Home() {
   const [password, setPassword] = useState(""); // Estado para la contraseña
@@ -17,23 +19,24 @@ export default function Home() {
   // Función para generar una contraseña aleatoria
   const generatePassword = async () => {
     const caracteres =
-      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/";  
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:',.<>?/";
     let newPassword = "";
 
     for (let i = 0; i < passwordLength; i++) {
       const randomIndex = Math.floor(Math.random() * caracteres.length);
+
       newPassword += caracteres[randomIndex];
     }
 
     const now = new Date();
+
     setPassword(newPassword); // Actualiza el estado con la nueva contraseña
-    const password:PasswordRequest={
-      
-      password:newPassword ,
+    const password: PasswordRequest = {
+      password: newPassword,
       characters: newPassword.length,
       createdAt: now,
-      updatedAt: now
-    }
+      updatedAt: now,
+    };
 
     try {
       // Guardar la contraseña en la base de datos
@@ -48,7 +51,7 @@ export default function Home() {
   };
 
   // Función para manejar la selección de la longitud de la contraseña
-  const handleLengthChange = (event:any) => {
+  const handleLengthChange = (event: any) => {
     setPasswordLength(parseInt(event.target.value)); // Actualiza la longitud de la contraseña con el valor seleccionado
   };
 
@@ -75,42 +78,43 @@ export default function Home() {
         </Link>
       </div>
 
-      
-
       {/* Formulario para seleccionar la longitud de la contraseña */}
       <div className="border-2 border-gray-200 dark:border-gray-800 rounded-lg p-2 flex flex-col items-center justify-center">
         <h1 className={title({ color: "cyan" })}>Dígitos de la contraseña</h1>
 
-        <form action="" className="flex items-center justify-around w-full mx-auto gap-2">
+        <form
+          action=""
+          className="flex items-center justify-around w-full mx-auto gap-2"
+        >
           <div className="border-2 border-gray-200 dark:border-gray-800 rounded-lg p-2 w-1/4 flex flex-col items-center">
             <input
-              type="radio"
-              name="digits"
-              value={14}
-              id="14"
               checked={passwordLength === 14}
+              id="14"
+              name="digits"
+              type="radio"
+              value={14}
               onChange={handleLengthChange}
             />
             <label htmlFor="14">14</label>
           </div>
           <div className="border-2 border-gray-200 dark:border-gray-800 rounded-lg p-2 w-1/4 flex flex-col items-center">
             <input
-              type="radio"
-              name="digits"
-              value={16}
-              id="16"
               checked={passwordLength === 16}
+              id="16"
+              name="digits"
+              type="radio"
+              value={16}
               onChange={handleLengthChange}
             />
             <label htmlFor="16">16</label>
           </div>
           <div className="border-2 border-gray-200 dark:border-gray-800 rounded-lg p-2 w-1/4 flex flex-col items-center">
             <input
-              type="radio"
-              name="digits"
-              value={18}
-              id="18"
               checked={passwordLength === 18}
+              id="18"
+              name="digits"
+              type="radio"
+              value={18}
               onChange={handleLengthChange}
             />
             <label htmlFor="18">18</label>
@@ -122,12 +126,12 @@ export default function Home() {
       <div className="mt-8 ">
         <Snippet hideCopyButton hideSymbol variant="bordered">
           <input
-            id="password"
-            type="text"
             readOnly
-            value={password} // Muestra el estado como valor del input
-            placeholder="// Your PASS will be here"
             className="w-full px-4 py-2 text-center bg-gray-100 dark:bg-gray-950 border rounded w-full mx-auto text-[58px]"
+            id="password"
+            placeholder="// Your PASS will be here"
+            type="text"
+            value={password} // Muestra el estado como valor del input
           />
         </Snippet>
       </div>
@@ -156,7 +160,8 @@ export default function Home() {
             })}
             onClick={() => {
               if (password) {
-                navigator.clipboard.writeText(password) // Copia la contraseña al portapapeles
+                navigator.clipboard
+                  .writeText(password) // Copia la contraseña al portapapeles
                   .then(() => {
                     alert("Password copied to clipboard!"); // Mensaje de confirmación
                   })

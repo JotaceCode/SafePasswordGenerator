@@ -7,15 +7,27 @@ export const Logazo: React.FC<IconSvgProps> = ({
   width,
   height,
   ...props
-}) => (<svg id="sw-js-blob-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" version="1.1">
-  <defs>
-    <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
-      <stop id="stop1" stopColor="rgba(0, 0, 0, 1)" offset="0%"></stop>
-      <stop id="stop2" stopColor="rgba(251, 31, 217.775, 1)" offset="100%"></stop>
-    </linearGradient>
-  </defs>
-  <path fill="url(#sw-gradient)" d="M10.4,-14.1C13.1,-10.1,14.6,-6.5,17.1,-1.7C19.6,3.2,23,9.2,22.8,16.6C22.6,24,18.9,32.7,12.8,34.8C6.7,36.9,-1.7,32.3,-11.1,29.3C-20.5,26.4,-30.8,25.1,-35.4,19.4C-40,13.7,-38.7,3.5,-33.7,-2.6C-28.6,-8.8,-19.8,-11,-13.6,-14.3C-7.4,-17.6,-3.7,-22.1,0.1,-22.2C3.8,-22.3,7.7,-18,10.4,-14.1Z" transform="translate(50 50)" strokeWidth="0" stroke="url(#sw-gradient)"></path>
-</svg>
+}) => (
+  <svg
+    id="sw-js-blob-svg"
+    version="1.1"
+    viewBox="0 0 100 100"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
+        <stop id="stop1" offset="0%" stopColor="rgba(0, 0, 0, 1)" />
+        <stop id="stop2" offset="100%" stopColor="rgba(251, 31, 217.775, 1)" />
+      </linearGradient>
+    </defs>
+    <path
+      d="M10.4,-14.1C13.1,-10.1,14.6,-6.5,17.1,-1.7C19.6,3.2,23,9.2,22.8,16.6C22.6,24,18.9,32.7,12.8,34.8C6.7,36.9,-1.7,32.3,-11.1,29.3C-20.5,26.4,-30.8,25.1,-35.4,19.4C-40,13.7,-38.7,3.5,-33.7,-2.6C-28.6,-8.8,-19.8,-11,-13.6,-14.3C-7.4,-17.6,-3.7,-22.1,0.1,-22.2C3.8,-22.3,7.7,-18,10.4,-14.1Z"
+      fill="url(#sw-gradient)"
+      stroke="url(#sw-gradient)"
+      strokeWidth="0"
+      transform="translate(50 50)"
+    />
+  </svg>
 );
 
 export const Logo: React.FC<IconSvgProps> = ({
@@ -25,75 +37,73 @@ export const Logo: React.FC<IconSvgProps> = ({
   ...props
 }) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    height={size || height}
     version="1.1"
     viewBox="0 0 800 800"
     width={size || width}
-    height={size || height}
+    xmlns="http://www.w3.org/2000/svg"
     {...props}
   >
     <defs>
-      <linearGradient id="nnneon-grad" x1="50%" y1="0%" x2="50%" y2="100%">
-        <stop stopColor="hsl(272, 99%, 54%)" stopOpacity="1" offset="0%" />
-        <stop stopColor="hsl(0, 0%, 53%)" stopOpacity="1" offset="100%" />
+      <linearGradient id="nnneon-grad" x1="50%" x2="50%" y1="0%" y2="100%">
+        <stop offset="0%" stopColor="hsl(272, 99%, 54%)" stopOpacity="1" />
+        <stop offset="100%" stopColor="hsl(0, 0%, 53%)" stopOpacity="1" />
       </linearGradient>
       <filter
+        colorInterpolationFilters="sRGB"
+        filterUnits="objectBoundingBox"
+        height="400%"
         id="nnneon-filter"
+        primitiveUnits="userSpaceOnUse"
+        width="400%"
         x="-100%"
         y="-100%"
-        width="400%"
-        height="400%"
-        filterUnits="objectBoundingBox"
-        primitiveUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
       >
         <feGaussianBlur
-          stdDeviation="17 8"
-          x="0%"
-          y="0%"
-          width="100%"
+          edgeMode="none"
           height="100%"
           in="SourceGraphic"
-          edgeMode="none"
           result="blur"
+          stdDeviation="17 8"
+          width="100%"
+          x="0%"
+          y="0%"
         />
       </filter>
       <filter
+        colorInterpolationFilters="sRGB"
+        filterUnits="objectBoundingBox"
+        height="400%"
         id="nnneon-filter2"
+        primitiveUnits="userSpaceOnUse"
+        width="400%"
         x="-100%"
         y="-100%"
-        width="400%"
-        height="400%"
-        filterUnits="objectBoundingBox"
-        primitiveUnits="userSpaceOnUse"
-        colorInterpolationFilters="sRGB"
       >
         <feGaussianBlur
-          stdDeviation="10 17"
-          x="0%"
-          y="0%"
-          width="100%"
+          edgeMode="none"
           height="100%"
           in="SourceGraphic"
-          edgeMode="none"
           result="blur"
+          stdDeviation="10 17"
+          width="100%"
+          x="0%"
+          y="0%"
         />
       </filter>
     </defs>
-    <g strokeWidth="70.5" stroke="url(#nnneon-grad)" fill="none">
+    <g fill="none" stroke="url(#nnneon-grad)" strokeWidth="70.5">
       <path
         d="M388.4530107167675 233.46125231926777C395.59828768523175 229.33666774729716 404.40171231476825 229.33666774729716 411.5469892832325 233.46240701819613L538.4530203016707 306.7315181170911C545.5982972701349 310.8561026890618 550.0000095849032 318.48057971278024 550.0000095849032 326.7309035556499V473.2691257534399C550.0000095849032 481.5194495963096 545.5982972701349 489.14392662002797 538.4530203016707 493.26966589092694L411.5469892832325 566.538776989822C404.40171231476825 570.6633615617925 395.59828768523175 570.6633615617925 388.4530107167675 566.5376222908938L261.54697969832927 493.26851119199864C254.401702729865 489.14392662002797 249.99999041509682 481.5194495963096 249.99999041509682 473.2691257534399V326.7309035556499C249.99999041509682 318.48057971278024 254.401702729865 310.8561026890618 261.54697969832927 306.7303634181629L388.4530107167675 233.46125231926777Z"
         filter="url(#nnneon-filter)"
-      ></path>
+      />
       <path
         d="M400.4530107167675 233.46125231926777C407.59828768523175 229.33666774729716 416.40171231476825 229.33666774729716 423.5469892832325 233.46240701819613L550.4530203016707 306.7315181170911C557.5982972701349 310.8561026890618 562.0000095849032 318.48057971278024 562.0000095849032 326.7309035556499V473.2691257534399C562.0000095849032 481.5194495963096 557.5982972701349 489.14392662002797 550.4530203016707 493.26966589092694L423.5469892832325 566.538776989822C416.40171231476825 570.6633615617925 407.59828768523175 570.6633615617925 400.4530107167675 566.5376222908938L273.54697969832927 493.26851119199864C266.401702729865 489.14392662002797 261.9999904150968 481.5194495963096 261.9999904150968 473.2691257534399V326.7309035556499C261.9999904150968 318.48057971278024 266.401702729865 310.8561026890618 273.54697969832927 306.7303634181629L400.4530107167675 233.46125231926777Z"
         filter="url(#nnneon-filter2)"
         opacity="0.25"
-      ></path>
+      />
     </g>
   </svg>
-
-
 );
 
 export const DiscordIcon: React.FC<IconSvgProps> = ({

@@ -28,7 +28,6 @@ export const viewport: Viewport = {
   ],
 };
 
-
 // Root layout
 export default function RootLayout({
   children,

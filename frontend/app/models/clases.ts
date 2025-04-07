@@ -1,20 +1,19 @@
 export interface Password {
-    id_pass: number;
-    password: string;
-    characters: number;
-    createdAt: Date;
-    updatedAt: Date;
+  id_pass: number;
+  password: string;
+  characters: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export interface PasswordRequest {
-    password: string;
-    characters: number;
-    createdAt: Date;
-    updatedAt: Date;
+  password: string;
+  characters: number;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
-
 export interface passwordResponse {
-    password: Password;
-    ok:boolean;
+  password: Password;
+  ok: boolean;
 }

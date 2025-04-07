@@ -11,7 +11,7 @@ export const title = tv({
       green: "from-[#6FEE8D] to-[#17c964]",
       pink: "from-[#FF72E1] to-[#F54C7A]",
       foreground: "dark:from-[#FFFFFF] dark:to-[#4B4B4B]",
-      fondo:"radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(44,0,91,1) 100%)"
+      fondo: "radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(44,0,91,1) 100%)",
     },
     size: {
       sm: "text-3xl lg:text-4xl",
