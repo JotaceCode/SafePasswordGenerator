@@ -11,6 +11,8 @@ const bd1: any = mysql.createPool({
   password: DB_PASSWORD,
   waitForConnections: true,
   connectionLimit: 10,
+  queueLimit: 0,
+  
 });
 
 

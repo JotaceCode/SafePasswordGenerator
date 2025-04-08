@@ -9,7 +9,7 @@ app.use(express.json());
 
 // CORS deben estar por encima de las rutas, sino no se aplican !!!!!IMPORTANTE!!!!!!
 app.use(cors({
-  origin: "*",
+  origin: "https://safe-password-generator-vert.vercel.app",
   methods: ["GET", "POST", "PUT", "DELETE"],
   allowedHeaders: ["Content-Type","Authorization"],
   credentials: true, 

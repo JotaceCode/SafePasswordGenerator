@@ -2,9 +2,7 @@ import axios from "axios";
 
 import { Password, PasswordRequest } from "../models/clases";
 
-// No es necesario agregar 'Access-Control-Allow-Origin' aquí. Este encabezado es manejado por el servidor.
-
-const API_BASE_URL = "http://localhost:3001/api/passwords"; // Cambia esto según la URL base de tu backend
+const API_BASE_URL = "https://safepasswordgenerator-production.up.railway.app/api/passwords"; // Cambia esto según la URL base de tu backend
 
 const passwordService = {
   // Get all passwords
