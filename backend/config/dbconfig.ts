@@ -1,12 +1,19 @@
 import mysql from 'mysql2/promise';
+import {
+  DB_HOST,
+  DB_PORT,
+  DB_USER,
+  DB_PASSWORD,
+  DB_DATABASE,
+} from './config';
 
 // Configuración de la conexión
 const dbConfig = {
-  host: 'localhost',
-  port: 3306,
-  user: 'root',
-  password: '', // Cambia esto según tu configuración
-  database: 'test', // Cambia al nombre de tu base de datos
+  host: DB_HOST,
+  port: DB_PORT,
+  user: DB_USER,
+  password: DB_PASSWORD,
+  database: DB_DATABASE,
 };
 
 // Método para comprobar y crear la tabla
