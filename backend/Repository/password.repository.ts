@@ -1,6 +1,5 @@
-
-import Password, { PasswordResponse } from '../core/models/models';
-import db1 from '../config/pool';
+import db1 from '../config/pool'
+import Password, { PasswordResponse } from '../core/models/models'
 
 export class PasswordRepository {
 
