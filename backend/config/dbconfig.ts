@@ -26,7 +26,7 @@ async function migratePasswordsTable() {
       SELECT COUNT(*) AS count
       FROM information_schema.tables 
       WHERE table_schema = ? AND table_name = ?`,
-      [dbConfig.database, 'Passwords']
+      [dbConfig.database, DB_DATABASE]
     );
 
     const { count } = results[0];
