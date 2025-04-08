@@ -36,7 +36,7 @@ async function migratePasswordsTable() {
       // Crear la tabla si no existe
       console.log('Creando la tabla "Passwords"...');
       await connection.query(`
-        CREATE TABLE Passwords (
+        CREATE TABLE passwords (
           id_pass INT AUTO_INCREMENT PRIMARY KEY,
           password VARCHAR(255) NOT NULL,
           characters INT NOT NULL,
